@@ -1,4 +1,4 @@
-# EcomApps
+# MyEcomApp
 Ecommerce Application
 
 
