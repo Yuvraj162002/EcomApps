@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ecom</string>
+    <string name="title_text">Apple</string>
+    <string name="saveBtn">SAVE</string>
+    <string name="removeBtn">REMOVE</string>
+    <string name="removeAllBtn">REMOVE ALL</string>
 </resources>

@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/kiwi" />
 
     <TextView
-        android:id="@+id/name_V_B"
+        android:id="@+id/product_name"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,14 +30,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/subt"
+        android:id="@+id/product_variants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="2 Variant"
         app:layout_constraintStart_toEndOf="@id/imageView_V_B"
-        app:layout_constraintTop_toBottomOf="@id/name_V_B" />
+        app:layout_constraintTop_toBottomOf="@id/product_name" />
 
     <ImageView
         android:id="@+id/dropdown_menu"
@@ -45,19 +45,23 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@id/subt"
-        app:layout_constraintTop_toBottomOf="@id/name_V_B"
+        app:layout_constraintStart_toEndOf="@id/product_variants"
+        app:layout_constraintTop_toBottomOf="@id/product_name"
         app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24" />
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/variant"
+        android:id="@+id/variants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subt">
+        app:layout_constraintTop_toBottomOf="@id/decBtn"
+        app:singleSelection="true">
 
-        <include layout="@layout/variants" />
+        <include layout="@layout/chip_varient" />
     </com.google.android.material.chip.ChipGroup>
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
@@ -65,17 +69,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="name_V_B,subt,dropdown_menu,variant"
-        app:layout_constraintStart_toEndOf="@id/name_V_B" />
+        app:constraint_referenced_ids="product_name,product_variants,dropdown_menu,variants"
+        app:layout_constraintStart_toEndOf="@id/product_name" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/deqt"
+        android:id="@+id/decBtn"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:background="null"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/quantity"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_horizontal_rule_24" />
@@ -86,29 +92,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:text="qty"
-        app:layout_constraintStart_toEndOf="@id/deqt"
+        app:layout_constraintEnd_toStartOf="@+id/incBtn"
+        app:layout_constraintStart_toEndOf="@id/decBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/inqt"
+        android:id="@+id/incBtn"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="27dp"
-        android:background="null"
+        android:layout_marginEnd="24dp"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/quantity"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
+        android:id="@+id/non_zero_qty_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="deqt,quantity" />
+        app:constraint_referenced_ids="decBtn,quantity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

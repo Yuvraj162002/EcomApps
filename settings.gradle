@@ -1,3 +1,4 @@
 include ':models'
 include ':User-app'
 rootProject.name = "ecom"
+include ':models'
