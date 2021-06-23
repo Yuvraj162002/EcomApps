@@ -1,5 +1,5 @@
 package com.example.ecom.controllers;
 
 public interface AdapterCallbacksListener {
-    void onCartUpdated();
+    void onCartUpdated(int position);
 }

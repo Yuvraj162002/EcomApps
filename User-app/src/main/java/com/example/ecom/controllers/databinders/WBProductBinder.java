@@ -26,14 +26,13 @@ public class WBProductBinder {
     private Context context;
     private Cart cart;
     private AdapterCallbacksListener listener;
-    private LayoutInflater inflater;
+
 
 
     public WBProductBinder(Context context, Cart cart, AdapterCallbacksListener listener){
         this.context = context;
         this.cart = cart;
         this.listener = listener;
-        this.inflater=((MainActivity)context).getLayoutInflater();
     }
 
    public void bind(ItemWbProductBinding b, Product product, int position){
@@ -48,7 +47,7 @@ public class WBProductBinder {
         checkWbProductInCart(b,product);
     }
 
-    private void checkWbProductInCart(ItemWbProductBinding b, Product product) {
+    public void checkWbProductInCart(ItemWbProductBinding b, Product product) {
         if(cart.cartItems.containsKey(product.name)){
             b.nonZeroQtyGroupWB.setVisibility(View.VISIBLE);
             b.addBtn.setVisibility(View.GONE);
@@ -65,27 +64,20 @@ public class WBProductBinder {
        b.addBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-            new WeightPickerDialog(context,cart).show(product, new WeightPickerDialog.WeightPickerCompleteListener() {
-                @Override
-                public void onCompleted() {
-                    checkWbProductInCart(b,product);
-                    listener.onCartUpdated();
-                }
-            });
+                showDialog(product,position);
            }
        });
+
        b.editBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               new WeightPickerDialog(context,cart).show(product, new WeightPickerDialog.WeightPickerCompleteListener() {
-                   @Override
-                   public void onCompleted() {
-                       checkWbProductInCart(b,product);
-                   }
-               });
-
+               showDialog(product,position);
            }
        });
+    }
+
+    private void showDialog(Product product, int position) {
+        new WeightPickerDialog(context,cart,position,product,listener).show();
     }
 
 }

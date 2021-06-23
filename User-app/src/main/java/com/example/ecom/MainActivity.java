@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding b;
     private ProductsAdapter adapter;
     List<Product> productList=ProductsHelper.getProducts();
-    private Cart cart;
+    Cart cart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private void setupAdapter() {
         AdapterCallbacksListener listener = new AdapterCallbacksListener() {
             @Override
-            public void onCartUpdated() {
+            public void onCartUpdated(int position) {
                 updateCartSummary();
+                adapter.notifyItemChanged(position,"payload");
             }
         };
 
@@ -46,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 , cart
                 , listener);
 
-        b.list.setLayoutManager(new LinearLayoutManager(this));
 
         b.list.setAdapter(adapter);
+        b.list.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void updateCartSummary() {

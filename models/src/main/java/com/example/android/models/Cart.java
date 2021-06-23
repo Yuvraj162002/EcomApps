@@ -28,7 +28,7 @@ public class Cart {
 
 
     //To Add vb products:
-    public void add(Product product, Variants variants) {
+    public void add(Product product, Variants variants,int qty) {
         String key= product.name+ "" + variants.name;
         //if already exists:
         if(cartItems.containsKey(key)){

@@ -22,4 +22,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
+    <style name="imageButton">
+        <!-- <item name="android:layout_weight">wrap_content</item>
+         <item name="android:layout_height">wrap_content</item>-->
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:tint">@color/design_default_color_primary</item>
+    </style>
 </resources>

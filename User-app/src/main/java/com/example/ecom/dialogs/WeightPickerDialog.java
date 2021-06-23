@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -19,35 +20,41 @@ import com.example.ecom.databinding.DialogWeightPickerBinding;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class WeightPickerDialog {
-    private LayoutInflater inflater;
 
     private Context context;
 
     private Cart cart;
 
-    WeightPickerCompleteListener listener;
-
     private AlertDialog dialog;
 
     private Product product;
+
+    private AdapterCallbacksListener listener;
+
+    private int position;
 
     private int minValueKg;
 
     private int minValueG;
 
+    private int selectedPosition=0;
+
     private DialogWeightPickerBinding binding;
 
-    public WeightPickerDialog(Context context, Cart cart){
+    public WeightPickerDialog(Context context, Cart cart,int position,Product product, AdapterCallbacksListener listener){
         this.context = context;
         this.cart = cart;
-        inflater=((MainActivity)context).getLayoutInflater();
-
+        this.product = product;
+        this.listener = listener;
+        this.position = position;
     }
 
 
-    public void show(Product product, WeightPickerCompleteListener listener) {
+    public void show() {
+        binding=DialogWeightPickerBinding.inflate(((MainActivity)context).getLayoutInflater());
 
-         dialog=new MaterialAlertDialogBuilder(context, R.style.CustomDialogTheme)
+        dialog=new MaterialAlertDialogBuilder(context, R.style.CustomDialogTheme)
+                 .setCancelable(false)
                 .setView(binding.getRoot())
                 .show();
 
@@ -56,6 +63,8 @@ public class WeightPickerDialog {
         minQty();
 
         buttonEventHandlers();
+
+        preSelectedQty();
 
     }
 
@@ -84,17 +93,11 @@ public class WeightPickerDialog {
         pickerRange += 50;
     }
 
+    binding.GPicker.setDisplayedValues(null);
     binding.GPicker.setMinValue(0);
     binding.GPicker.setMaxValue(ValueToDisplay.length-1);
     binding.GPicker.setDisplayedValues(ValueToDisplay);
-
-    if(cart.cartItems.containsKey(product.name)){
-        String[] minValue= String.valueOf(cart.cartItems.get(product.name).qty).split("\\.");
-        String minQtyG ="0."+ minValue[1];
-
-        int gram=(int) (Float.parseFloat(minQtyG)*1000);
-        binding.GPicker.setValue((gram-minValueG)/50);
-    }
+    binding.GPicker.setValue(selectedPosition);
     }
 
     private void eventNumberPickerKg() {
@@ -112,47 +115,79 @@ public class WeightPickerDialog {
     binding.KgPicker.setMaxValue(ValueToDisplay.length-1);
     binding.KgPicker.setDisplayedValues(ValueToDisplay);
 
-    if(cart.cartItems.containsKey(product.name)){
-       String[] minValues= String.valueOf(cart.cartItems.get(product.name).qty).split("\\.");
-       binding.KgPicker.setValue(Integer.parseInt(minValues[0])-minValueKg);
-    }
+    binding.KgPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        @Override
+        public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            if(picker.getValue()+minValueKg!=minValueKg){
+                if(minValueG!=0){
+                    return;
+                }
+                selectedPosition=((minValueG/50+binding.GPicker.getValue())*50)/50;
+                minValueG=0;
+                eventNumberPickerG();
+            }
+            else if(picker.getValue()+minValueKg==minValueKg){
+                minValueG=(int)((product.minQuantity-minValueKg)*1000);
+
+                selectedPosition=((binding.GPicker.getValue()*50)-minValueG)/50;
+                if(selectedPosition<0){
+                    selectedPosition=0;
+                }
+                eventNumberPickerG();
+            }
+        }
+    });
     }
 
     private void buttonEventHandlers() {
         binding.saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveToCart(product, (WeightPickerCompleteListener) listener);
+              float qty=(minValueKg + binding.KgPicker.getValue())
+                      +((((minValueG/50f)+binding.GPicker.getValue())*50)/1000f);
+
+              if(cart.cartItems.containsKey(product.name) && (cart.cartItems.get(product.name).qty==qty)){
+                  dialog.dismiss();
+                  return;
+              }
+              cart.add(product,qty);
+
+              listener.onCartUpdated(position);
+
             }
         });
 
         binding.removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cart.remove(product);
-
-                listener.onCompleted();
+                if(cart.cartItems.containsKey(product.name)){
+                    cart.remove(product);
+                    listener.onCartUpdated(position);
+                }
                 dialog.dismiss();
             }
 
         });
     }
 
-    private void SaveToCart(Product product,WeightPickerCompleteListener listener) {
+    private void preSelectedQty() {
 
-        Float quantity=(minValueKg +binding.KgPicker.getValue())+((((minValueG/50f)+binding.GPicker.getValue())*50)/1000f);
+        if(cart.cartItems.containsKey(product.name)){
+            String[] minValues= String.valueOf(cart.cartItems.get(product.name).qty).split("\\.");
 
-        if(quantity<product.minQuantity){
-            Toast.makeText(context,"Minimum" +product.minQuantity +"Kg needs to be selected",Toast.LENGTH_SHORT).show();
-            return;
+            String minQtyG ="0."+ minValues[1];
+
+            int gram=(int) (Float.parseFloat(minQtyG)*1000);
+
+            binding.KgPicker.setValue(Integer.parseInt(minValues[0])-minValueKg);
+
+            if(Integer.parseInt(minValues[0])!=minValueKg){
+                if(minValueG!=0){
+                    minValueG = 0;
+                    eventNumberPickerG();
+                }
+            }
+            binding.GPicker.setValue((gram-minValueG)/50);
         }
-        cart.add(product,quantity);
-        listener.onCompleted();
-        dialog.dismiss();
-
-    }
-
-    public interface WeightPickerCompleteListener{
-        void onCompleted();
     }
 }

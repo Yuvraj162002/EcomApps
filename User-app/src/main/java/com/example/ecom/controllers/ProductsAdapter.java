@@ -26,12 +26,17 @@ public class ProductsAdapter
     private Context context;
     private List<Product> products;
 
+    private Cart cart;
+    private AdapterCallbacksListener listener;
+
     private WBProductBinder wbProductBinder;
     private VBProductBinder vbProductBinder;
 
     public ProductsAdapter(Context context, List<Product> products, Cart cart, AdapterCallbacksListener listener){
+        this.cart=cart;
         this.context = context;
         this.products = products;
+        this.listener=listener;
 
         wbProductBinder = new WBProductBinder(context, cart, listener);
         vbProductBinder = new VBProductBinder(context, cart, listener);
@@ -46,12 +51,12 @@ public class ProductsAdapter
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(viewType == ProductType.TYPE_WB){
-            ItemWbProductBinding binding = ItemWbProductBinding.inflate(
+            ItemWbProductBinding b = ItemWbProductBinding.inflate(
                     LayoutInflater.from(context)
                     , parent
                     , false
             );
-            return new WBProductViewHolder(binding);
+            return new WBProductViewHolder(b);
         } else {
             ItemVbProductBinding binding = ItemVbProductBinding.inflate(
                     LayoutInflater.from(context)
@@ -64,12 +69,28 @@ public class ProductsAdapter
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Product product = products.get(position);
 
         if(holder instanceof WBProductViewHolder){
-            wbProductBinder.bind(((WBProductViewHolder) holder).b, product,position);
-        } else {
-            vbProductBinder.bind(((VBProductViewHolder) holder).b, product);
+            wbProductBinder.bind(((WBProductViewHolder) holder).b, products.get(position),position);
+            return;
+        }
+            vbProductBinder.bind(((VBProductViewHolder)holder).b, products.get(position),position);
+
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, @NonNull List<Object> payloads) {
+        if(!payloads.isEmpty()){
+            if(holder instanceof WBProductViewHolder){
+
+                wbProductBinder.checkWbProductInCart(((WBProductViewHolder)holder).b, products.get(position));
+            }
+            else {
+                vbProductBinder.checkVbProductInCart(products.get(position),((VBProductViewHolder)holder).b);
+            }
+        }
+        else {
+            super.onBindViewHolder(holder, position, payloads);
         }
     }
 

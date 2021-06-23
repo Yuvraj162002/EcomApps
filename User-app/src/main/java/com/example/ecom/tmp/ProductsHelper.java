@@ -13,7 +13,8 @@ public class ProductsHelper {
         public static List<Product> getProducts(){
          List<Product>products=new ArrayList<>(
          Arrays.asList(
-                 new Product("Apple",R.drawable.apple,1f,100f)
+                 new Product("Apple",R.drawable.apple,100f,1f),
+                 new Product("Kiwi",R.drawable.kiwi,200f,1f)
          )
             );
 
