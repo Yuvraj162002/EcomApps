@@ -95,7 +95,7 @@ public class WeightPickerDialog {
 
     binding.GPicker.setDisplayedValues(null);
     binding.GPicker.setMinValue(0);
-    binding.GPicker.setMaxValue(ValueToDisplay.length-1);
+    binding.GPicker.setMaxValue(numberOfValues-1);
     binding.GPicker.setDisplayedValues(ValueToDisplay);
     binding.GPicker.setValue(selectedPosition);
     }
@@ -153,7 +153,7 @@ public class WeightPickerDialog {
               cart.add(product,qty);
 
               listener.onCartUpdated(position);
-
+              dialog.dismiss();
             }
         });
 

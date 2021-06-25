@@ -35,27 +35,5 @@ public class Product {
         this.variants = variants;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-             if (this.type ==ProductType.TYPE_WB) {
-                stringBuilder.append("WeightBasedProduct { ");
-             } else {
-                 stringBuilder.append("VariantBasedProduct { ");
-             }
-
-             stringBuilder.append("name = ").append(this.name);
-
-             if (this.type ==ProductType.TYPE_VB) {
-                 stringBuilder.append("minQty = ").append(this.minQuantity);
-                 stringBuilder.append(", pricePerKg = ").append(this.pricePerKg);
-             } else {
-                 stringBuilder.append(", variants = ").append(this.variants);
-             }
-             stringBuilder.append(" } ");
-
-             return stringBuilder.toString();
-    }
 }
 

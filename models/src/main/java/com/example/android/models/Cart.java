@@ -6,10 +6,15 @@ import java.util.HashMap;
 
 public class Cart {
     public HashMap<String,CartItem> cartItems=new HashMap<>();
-    public float total, noOfItems;
+    public float total=0, noOfItems=0;
 
     //To Add wb products:
    public void add(Product product, float quantity) {
+       if(quantity==0){
+           removeWBP(product);
+           return;
+       }
+
         // if item already exists in cart:
         if (cartItems.containsKey(product.name)) {
             total -= cartItems.get(product.name).Cost();
@@ -56,9 +61,11 @@ public class Cart {
 
     private void removeWBP(Product product) {
         //Update cart:
-        total-=cartItems.get(product.name).Cost();
-        noOfItems--;
-        cartItems.remove(product.name);
+        if(cartItems.containsKey(product.name)) {
+            total -= cartItems.get(product.name).Cost();
+            noOfItems--;
+            cartItems.remove(product.name);
+        }
     }
 
     //to remove vb products:

@@ -42,11 +42,6 @@ public class ProductsAdapter
         vbProductBinder = new VBProductBinder(context, cart, listener);
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return products.get(position).type;
-    }
-
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -80,10 +75,11 @@ public class ProductsAdapter
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, @NonNull List<Object> payloads) {
+        Product product=products.get(position);
         if(!payloads.isEmpty()){
             if(holder instanceof WBProductViewHolder){
 
-                wbProductBinder.checkWbProductInCart(((WBProductViewHolder)holder).b, products.get(position));
+                wbProductBinder.checkWbProductInCart(((WBProductViewHolder)holder).b, product);
             }
             else {
                 vbProductBinder.checkVbProductInCart(products.get(position),((VBProductViewHolder)holder).b);
@@ -99,4 +95,9 @@ public class ProductsAdapter
         return products.size();
     }
 
+
+    @Override
+    public int getItemViewType(int position) {
+        return products.get(position).type;
+    }
 }

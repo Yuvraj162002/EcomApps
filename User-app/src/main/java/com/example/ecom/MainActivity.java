@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         b = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
+        cart=new Cart();
+
         setupAdapter();
     }
 
