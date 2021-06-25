@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:clickable="false"
         android:text="₹ 80 - 500g"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
@@ -19,6 +18,8 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/add_btn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         style="@style/imageButton"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="8dp"
@@ -48,6 +49,8 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/dec_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         style="@style/imageButton"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/qty"
