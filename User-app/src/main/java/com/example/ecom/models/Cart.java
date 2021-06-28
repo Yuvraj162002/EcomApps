@@ -35,7 +35,7 @@ public class Cart {
 
     //To Add vb products:
     public void add(Product product, Variants variants, int qty) {
-        String key= product.name+ "" + variants.name;
+        String key= product.name+ " " + variants.name;
         //if already exists:
         if(cartItems.containsKey(key)){
             total-=cartItems.get(key).Cost();
@@ -68,7 +68,7 @@ public class Cart {
     //to remove vb products:
     public void removeAllVBP(Product product){
         for(Variants variants : product.variants){
-            String key= product.name+ "" + variants.name;
+            String key= product.name+ " " + variants.name;
 
             if(cartItems.containsKey(key)){
                 //Update cart:

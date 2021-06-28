@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCartUpdated(int position) {
                 updateCartSummary();
                 isUpdated=true;
-                adapter.notifyItemChanged(position,"payload");
+                adapter.notifyItemChanged(position);
             }
         };
 

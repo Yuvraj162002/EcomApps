@@ -73,7 +73,7 @@ public class ProductsAdapter
 
     }
 
-    @Override
+   /* @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, @NonNull List<Object> payloads) {
         Product product=products.get(position);
         if(!payloads.isEmpty()){
@@ -88,7 +88,7 @@ public class ProductsAdapter
         else {
             super.onBindViewHolder(holder, position, payloads);
         }
-    }
+    }*/
 
     @Override
     public int getItemCount() {
