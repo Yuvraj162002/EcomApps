@@ -4,4 +4,5 @@
     <string name="saveBtn">SAVE</string>
     <string name="removeBtn">REMOVE</string>
     <string name="removeAllBtn">REMOVE ALL</string>
+    <string name="checkout">CHECKOUT</string>
 </resources>

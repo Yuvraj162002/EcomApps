@@ -7,15 +7,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.android.models.Cart;
-import com.example.android.models.Product;
-import com.example.android.models.ProductType;
 import com.example.ecom.controllers.databinders.VBProductBinder;
 import com.example.ecom.controllers.databinders.WBProductBinder;
 import com.example.ecom.controllers.viewholders.VBProductViewHolder;
 import com.example.ecom.controllers.viewholders.WBProductViewHolder;
 import com.example.ecom.databinding.ItemVbProductBinding;
 import com.example.ecom.databinding.ItemWbProductBinding;
+import com.example.ecom.models.Cart;
+import com.example.ecom.models.Product;
+import com.example.ecom.models.ProductType;
 
 
 import java.util.List;

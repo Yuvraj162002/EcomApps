@@ -3,14 +3,15 @@ package com.example.ecom.controllers.databinders;
 import android.content.Context;
 import android.view.View;
 
-import com.example.android.models.Cart;
-import com.example.android.models.Product;
-import com.example.android.models.Variants;
+
 import com.example.ecom.MainActivity;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.ChipVarientBinding;
 import com.example.ecom.databinding.ItemVbProductBinding;
 import com.example.ecom.dialogs.VariantsQtyPickerDialog;
+import com.example.ecom.models.Cart;
+import com.example.ecom.models.Product;
+import com.example.ecom.models.Variants;
 
 import java.util.HashMap;
 
@@ -18,8 +19,8 @@ import java.util.HashMap;
 public class VBProductBinder {
     private Context context;
     private Cart cart;
-    private AdapterCallbacksListener listener;
-    private HashMap<String ,Boolean> saveVariantGrpVisibility=new HashMap<>();
+    private final AdapterCallbacksListener listener;
+    private final HashMap<String ,Boolean> saveVariantGrpVisibility=new HashMap<>();
 
     public VBProductBinder(Context context, Cart cart, AdapterCallbacksListener listener){
         this.context = context;
@@ -27,7 +28,7 @@ public class VBProductBinder {
         this.listener = listener;
     }
 
-    public void bind(ItemVbProductBinding b, Product product,int position){
+    public void bind(ItemVbProductBinding b, Product product, int position){
 
         //bind data
         b.productVariants.setText(product.variants.size() + " variants");
@@ -46,9 +47,9 @@ public class VBProductBinder {
 
         //show and gone variant group
         showAndHideVariantGrp(b,product);
-        checkVbProductInCart(product, b);
         inflateVariants(product, b);
-        editQty(product, b, position);
+        buttonEventHandler(product, b, position);
+        checkVbProductInCart(product, b);
 
     }
 
@@ -73,7 +74,7 @@ public class VBProductBinder {
 
     public void checkVbProductInCart(Product product, ItemVbProductBinding b) {
         //total qty from cart
-        int qty = 0;
+        int qty=0;
 
         for (Variants variant : product.variants) {
             //check qty present in cart
@@ -83,11 +84,11 @@ public class VBProductBinder {
         }
         //update views
         if (qty > 0) {
-            b.nonZeroQtyGroup.setVisibility(View.VISIBLE);
-            b.quantity.setText(qty + "");
+            b.nonZeroQtyGrp.setVisibility(View.VISIBLE);
+            b.qty.setText(qty + "");
         } else {
-            b.nonZeroQtyGroup.setVisibility(View.GONE);
-            b.quantity.setText(0 + "");
+            b.nonZeroQtyGrp.setVisibility(View.INVISIBLE);
+            b.qty.setText(0 + "");
         }
     }
 
@@ -112,8 +113,8 @@ public class VBProductBinder {
         b.productName.setText(product.name + " " + product.variants.get(0).name);
     }
 
-    private void editQty(Product product, ItemVbProductBinding b, int position) {
-        b.incBtn.setOnClickListener(new View.OnClickListener() {
+    private void buttonEventHandler(Product product, ItemVbProductBinding b, int position) {
+        b.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //for variants more than 1
@@ -123,7 +124,7 @@ public class VBProductBinder {
 
                     //for single variant
                 else {
-                    int qty = Integer.parseInt(b.quantity.getText().toString()) + 1;
+                    int qty = Integer.parseInt(b.qty.getText().toString()) + 1;
                     cart.add(product, product.variants.get(0), qty);
                     listener.onCartUpdated(position);
                 }

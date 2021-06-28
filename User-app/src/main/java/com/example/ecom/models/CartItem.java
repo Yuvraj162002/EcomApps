@@ -1,4 +1,4 @@
-package com.example.android.models;
+package com.example.ecom.models;
 
 public class CartItem {
     public float qty;
@@ -15,11 +15,4 @@ public class CartItem {
         return unitPrice* qty;
     }
 
-    @Override
-    public String toString() {
-        return "\n\t" + name + " ( " +
-                String.format("%f X %f = %f", unitPrice, qty, Cost()) +
-                " )";
-
-    }
 }

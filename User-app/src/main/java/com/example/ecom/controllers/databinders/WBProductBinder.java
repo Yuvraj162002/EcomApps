@@ -1,24 +1,16 @@
 package com.example.ecom.controllers.databinders;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.transition.Transition;
-import com.example.android.models.Cart;
-import com.example.android.models.Product;
-import com.example.ecom.MainActivity;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.DialogWeightPickerBinding;
 import com.example.ecom.databinding.ItemWbProductBinding;
 import com.example.ecom.dialogs.WeightPickerDialog;
+import com.example.ecom.models.Cart;
+import com.example.ecom.models.Product;
 
 
 public class WBProductBinder {

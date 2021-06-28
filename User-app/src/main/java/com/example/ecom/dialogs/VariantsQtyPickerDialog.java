@@ -5,15 +5,15 @@ import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.android.models.Cart;
-import com.example.android.models.Product;
-import com.example.android.models.Variants;
 import com.example.ecom.MainActivity;
 import com.example.ecom.R;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.DialogVariantPickerBinding;
 import com.example.ecom.databinding.DialogWeightPickerBinding;
 import com.example.ecom.databinding.ItemVariantBinding;
+import com.example.ecom.models.Cart;
+import com.example.ecom.models.Product;
+import com.example.ecom.models.Variants;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.HashMap;
@@ -145,7 +145,7 @@ public class VariantsQtyPickerDialog {
     }
 
     private void removeAllVariants() {
-        b.removeBtn.setOnClickListener(new View.OnClickListener() {
+        b.removeAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!saveVariantsQty.isEmpty()) {

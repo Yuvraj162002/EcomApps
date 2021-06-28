@@ -1,4 +1,4 @@
-package com.example.android.models;
+package com.example.ecom.models;
 
 
 
@@ -21,7 +21,7 @@ public class Product {
 
     //wb PRODUCT CONSTRUCTOR:
     public Product(String name, int imageURL, float pricePerKg, float minQuantity) {
-        type=ProductType.TYPE_WB;
+        type= ProductType.TYPE_WB;
         this.name = name;
         this.imageURL = imageURL;
         this.pricePerKg = pricePerKg;

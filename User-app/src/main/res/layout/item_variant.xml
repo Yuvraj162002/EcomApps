@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="₹ 80 - 500g"
+        android:text=""
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:id="@+id/non_zero_qty_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:constraint_referenced_ids="qty,dec_btn" />
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="2"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@+id/add_btn"
         app:layout_constraintEnd_toStartOf="@+id/add_btn"
         app:layout_constraintTop_toTopOf="@+id/add_btn" />

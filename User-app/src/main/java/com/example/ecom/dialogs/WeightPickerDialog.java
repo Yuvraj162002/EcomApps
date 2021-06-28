@@ -10,13 +10,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.android.models.Cart;
-import com.example.android.models.Product;
 import com.example.ecom.MainActivity;
 import com.example.ecom.R;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.DialogWeightPickerBinding;
 
+import com.example.ecom.models.Cart;
+import com.example.ecom.models.Product;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class WeightPickerDialog {
@@ -119,7 +119,7 @@ public class WeightPickerDialog {
         @Override
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
             if(picker.getValue()+minValueKg!=minValueKg){
-                if(minValueG!=0){
+                if(minValueG==0){
                     return;
                 }
                 selectedPosition=((minValueG/50+binding.GPicker.getValue())*50)/50;
@@ -161,7 +161,7 @@ public class WeightPickerDialog {
             @Override
             public void onClick(View v) {
                 if(cart.cartItems.containsKey(product.name)){
-                    cart.remove(product);
+                    cart.removeWBP(product);
                     listener.onCartUpdated(position);
                 }
                 dialog.dismiss();

@@ -1,4 +1,4 @@
-package com.example.android.models;
+package com.example.ecom.models;
 
 public class Variants {
     public String name;
@@ -7,10 +7,5 @@ public class Variants {
     public Variants(String name, float price) {
         this.name = name;
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s @ Rs. %s",name,price);
     }
 }
