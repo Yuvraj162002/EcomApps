@@ -2,9 +2,10 @@ package com.example.ecom.models;
 
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Product {
+public class Product implements Serializable {
     //common
     public String name;
     public int imageURL;

@@ -21,8 +21,6 @@ public class ProductsHelper {
                          new Variants("1kg", 95),
                          new Variants("2kg", 180),
                          new Variants("5kg", 400)))),
-
-                 new Product("Orange",R.drawable.orange,70,0.2f),
                  new Product("Apple",R.drawable.apple,new ArrayList<>(Arrays.asList(
                          new Variants("1Kg",100),
                          new Variants("2kg",180)
@@ -47,13 +45,11 @@ public class ProductsHelper {
                          new Variants("1kg", 20),
                          new Variants("2kg", 35)
                  ))),
-                 new Product("Grapes",R.drawable.green_grapes,80,0.5f),
                  new Product("Black Grapes",R.drawable.black_grapes,100,1),
                  new Product("Mango",R.drawable.mango,new ArrayList<>(Arrays.asList(
                          new Variants("1Kg",150),
                          new Variants("2kg",290)))),
                  new Product("Sugar",R.drawable.sugar,50,1),
-                 new Product("Dal",R.drawable.dal,40,0.1f),
                  new Product("Dove Shampoo",R.drawable.dove,142,1),
                  new Product("Lux Soap",R.drawable.lux,50,1),
                  new Product("ToothBrush",R.drawable.brush,12,1)

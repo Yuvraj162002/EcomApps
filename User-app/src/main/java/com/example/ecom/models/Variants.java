@@ -1,6 +1,8 @@
 package com.example.ecom.models;
 
-public class Variants {
+import java.io.Serializable;
+
+public class Variants implements Serializable {
     public String name;
     public float price;
 

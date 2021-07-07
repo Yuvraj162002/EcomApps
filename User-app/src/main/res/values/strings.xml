@@ -5,4 +5,9 @@
     <string name="removeBtn">REMOVE</string>
     <string name="removeAllBtn">REMOVE ALL</string>
     <string name="checkout">CHECKOUT</string>
+    <string name="search">Search</string>
+    <string name="noItems">No Items In Cart......</string>
+    <color name="divider">#22212121</color>
+    <string name="title_activity_maps">Map</string>
+    <string name="Selected">SELECT ADDRESS</string>
 </resources>

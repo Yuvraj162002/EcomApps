@@ -60,7 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/total_amount" />
 
             <TextView
-                android:id="@+id/checkout_btn"
+                android:id="@+id/checkout"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,6 +75,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/NoItems"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/noItems"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
