@@ -7,8 +7,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,13 +15,11 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecom.Constants.Constants;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -34,11 +30,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.ecom.databinding.ActivityMapsBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
@@ -137,9 +131,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
         confirmAddress(mMap);
-        enableUserLocation();
-        zoomToUserLocation();
-
 
         }
 
@@ -216,7 +207,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 enableUserLocation();
                 zoomToUserLocation();
             } else {
-                // dialog;
+                Toast.makeText(this,"Please allow your location Permission",Toast.LENGTH_SHORT).show();
+                return;
             }
         }
     }
