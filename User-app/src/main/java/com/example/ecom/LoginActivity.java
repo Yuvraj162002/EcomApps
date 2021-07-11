@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import static com.example.ecom.Constants.Constants.RC_SIGN_IN;
 
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding b;
+    // Navigate to Main Activity
     final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
             new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
@@ -37,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
                     onSignInResult(result);
                 }
             }
+
     );
 
     @Override

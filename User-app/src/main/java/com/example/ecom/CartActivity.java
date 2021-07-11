@@ -61,13 +61,13 @@ public class CartActivity extends AppCompatActivity {
         b.editAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+                Intent intent = new Intent(CartActivity.this, MapsActivity.class);
+                startActivity(intent);
+                /*if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
                     buildAlertMessageNoGps();
-                }
-                else {
-                    Intent intent = new Intent(CartActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                }
+                }*/
+               /* else {
+                }*/
             }
         });
 
@@ -75,7 +75,7 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-    private void buildAlertMessageNoGps() {
+/*    private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
                 .setCancelable(false)
@@ -91,7 +91,7 @@ public class CartActivity extends AppCompatActivity {
                 });
         final AlertDialog alert = builder.create();
         alert.show();
-    }
+    }*/
 
  /*   private void showMap() {
         b.editAddress.setOnClickListener(new View.OnClickListener() {
