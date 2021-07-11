@@ -77,7 +77,7 @@
     </FrameLayout>
 
 
-    <TextView
+     <TextView
         android:id="@+id/NoItems"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="match_parent"

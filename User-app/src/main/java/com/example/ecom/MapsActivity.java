@@ -41,6 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ActivityMapsBinding binding;
     FusedLocationProviderClient fusedLocationProviderClient;
     Marker marker;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
