@@ -48,6 +48,7 @@ public class ProductsAdapter
         this.cart=cart;
         this.context = context;
         this.products = products;
+        this.products=new ArrayList<>(products);
         this.listener=listener;
         productsToShow=products;
 
@@ -79,19 +80,25 @@ public class ProductsAdapter
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         if(holder instanceof WBProductViewHolder){
-            ItemWbProductBinding binding;
             wbProductBinder.bind(((WBProductViewHolder) holder).b, productsToShow.get(position),position);
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    lastPosition=holder.getAdapterPosition();
+                    return false;
+                }
+            });
             return;
-        }else {
+        }else if(holder instanceof VBProductViewHolder) {
             vbProductBinder.bind(((VBProductViewHolder) holder).b, productsToShow.get(position), position);
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    lastPosition = holder.getAdapterPosition();
+                    return false;
+                }
+            });
         }
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                lastPosition=holder.getAdapterPosition();
-                return false;
-            }
-        });
     }
 
     @Override

@@ -39,7 +39,7 @@ public class ProductsActivity extends AppCompatActivity {
     Cart cart;
     private ItemTouchHelper itemTouchHelper;
     private boolean isUpdated;
-    public boolean isDragModeOn;
+    public boolean isDragModeOn=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +62,11 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
     private void AddProducts() {
-        new AddProductDialog(AddProductDialog.PRODUCT_ADD).showDialog(ProductsActivity.this , new AddProductDialog.OnProductAddListener() {
+        new AddProductDialog(AddProductDialog.PRODUCT_ADD).showDialog(ProductsActivity.this, new AddProductDialog.OnProductAddListener() {
 
             @Override
             public void onProductAddedOrEdit(Product product) {
-                //adapter.products.add(product);
+                adapter.products.add(product);
                 adapter.productsToShow.add(product);
                 adapter.notifyItemInserted(adapter.products.size() - 1);
                 Toast.makeText(ProductsActivity.this, "Product Added!", Toast.LENGTH_SHORT).show();
@@ -88,6 +88,7 @@ public class ProductsActivity extends AppCompatActivity {
         }
 
         this.cart=new Gson().fromJson(cart,Cart.class);
+        deleteProduct();
 
     }
 
@@ -145,7 +146,7 @@ public class ProductsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Product productToBeDeleted = adapter.products.get(adapter.lastPosition);
-                        //adapter.products.remove(adapter.lastPosition);
+                        adapter.products.remove(adapter.lastPosition);
                         adapter.productsToShow.remove(productToBeDeleted);
                         adapter.notifyItemRemoved(adapter.lastPosition);
                        // adapter.notifyItemChanged(adapter.lastPosition);

@@ -3,6 +3,7 @@ package com.example.android.admin_app.dialogs;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -27,10 +28,11 @@ public class AddProductDialog {
 
     public void showDialog(Context context, OnProductAddListener listener) {
         b = ProductInfoDialogBinding.inflate(LayoutInflater.from(context));
-
+        b.AddorEditTV.setText(productType == PRODUCT_ADD ? "Add Product" : "Edit Product");
+       // ContextThemeWrapper ctw=new ContextThemeWrapper(context,R.style.CustomDialogTheme);
         new AlertDialog.Builder(context)
                 .setCancelable(false)
-                .setTitle(productType == PRODUCT_ADD ? "Add Product" : "Edit Product")
+               // .setTitle(productType == PRODUCT_ADD ? "Add Product" : "Edit Product")
                 .setView(b.getRoot())
                 .setPositiveButton(productType == PRODUCT_ADD ? "ADD" : "EDIT", new DialogInterface.OnClickListener() {
                     @Override
