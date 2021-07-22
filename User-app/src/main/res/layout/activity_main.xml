@@ -23,11 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/design_default_color_primary"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal"
         android:padding="16dp"
         android:visibility="gone"
-        android:focusable="true"
-        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

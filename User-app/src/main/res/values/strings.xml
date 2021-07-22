@@ -10,4 +10,5 @@
     <color name="divider">#22212121</color>
     <string name="title_activity_maps">Map</string>
     <string name="Selected">SELECT ADDRESS</string>
+    <string name="DragDrop">Drag and Drop</string>
 </resources>

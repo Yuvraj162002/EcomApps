@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Admin-app</string>
+    <string name="DragDrop">drag and drop</string>
+    <string name="sorting">sorting</string>
+    <string name="search">search</string>
+    <string name="AddProducts">ADD</string>
+</resources>
