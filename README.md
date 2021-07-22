@@ -1,6 +1,7 @@
 # MyEcomApp
 Ecommerce Application
 [APK](https://github.com/Yuvraj162002/MyEcomApp/releases/download/V1.0/User-app-debug.apk)
+[Admin-App](https://github.com/Yuvraj162002/MyEcomApp/releases/download/v2.0/User-app-debug.apk)
 
 # Preview
 ![6da5f939-eb19-4d5d-8906-b4ef3078555b](https://user-images.githubusercontent.com/69674896/123616010-7bf46000-d823-11eb-98ab-259e3cf111d8.jpg)
