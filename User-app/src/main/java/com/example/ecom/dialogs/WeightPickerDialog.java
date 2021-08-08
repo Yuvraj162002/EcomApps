@@ -1,16 +1,12 @@
 package com.example.ecom.dialogs;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.ecom.MainActivity;
+import com.example.ecom.Activities.MainActivity;
 import com.example.ecom.R;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.DialogWeightPickerBinding;

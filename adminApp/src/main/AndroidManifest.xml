@@ -4,6 +4,8 @@
     package="com.example.android.admin_app">
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Adminapp">
-        <activity android:name=".OrdersActivity"></activity>
-        <activity android:name=".ProductsActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.OrdersActivity"></activity>
+        <activity android:name=".Activities.ProductsActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

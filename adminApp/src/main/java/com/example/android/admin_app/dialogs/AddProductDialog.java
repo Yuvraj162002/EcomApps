@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.android.admin_app.ProductsActivity;
+import com.example.android.admin_app.Activities.ProductsActivity;
 import com.example.android.admin_app.R;
 import com.example.android.admin_app.databinding.ProductInfoDialogBinding;
 import com.example.android.admin_app.models.Product;

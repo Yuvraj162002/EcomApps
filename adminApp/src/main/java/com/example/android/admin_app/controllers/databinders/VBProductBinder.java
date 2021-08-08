@@ -7,8 +7,7 @@ import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.android.admin_app.MainActivity;
-import com.example.android.admin_app.ProductsActivity;
+import com.example.android.admin_app.Activities.ProductsActivity;
 import com.example.android.admin_app.R;
 import com.example.android.admin_app.controllers.AdapterCallbacksListener;
 import com.example.android.admin_app.controllers.ProductsAdapter;

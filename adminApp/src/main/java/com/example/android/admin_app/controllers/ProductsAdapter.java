@@ -1,19 +1,14 @@
 package com.example.android.admin_app.controllers;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.android.admin_app.MainActivity;
-import com.example.android.admin_app.ProductsActivity;
-import com.example.android.admin_app.R;
 import com.example.android.admin_app.controllers.databinders.VBProductBinder;
 import com.example.android.admin_app.controllers.databinders.WBProductBinder;
 import com.example.android.admin_app.controllers.viewholders.VBProductViewHolder;

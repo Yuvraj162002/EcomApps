@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1341352258/ecom.iml" filepath="$PROJECT_DIR$/.idea/modules/1341352258/ecom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1194440214/ecom.Admin-app.iml" filepath="$PROJECT_DIR$/.idea/modules/1194440214/ecom.Admin-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/878591820/ecom.User-app.iml" filepath="$PROJECT_DIR$/.idea/modules/878591820/ecom.User-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ecom.adminApp.iml" filepath="$PROJECT_DIR$/.idea/modules/ecom.adminApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/45241303/ecom.models.iml" filepath="$PROJECT_DIR$/.idea/modules/45241303/ecom.models.iml" />
+    </modules>
+  </component>
+</project>

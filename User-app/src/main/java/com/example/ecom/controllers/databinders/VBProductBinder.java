@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 
-import com.example.ecom.MainActivity;
+import com.example.ecom.Activities.MainActivity;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.ChipVarientBinding;
 import com.example.ecom.databinding.ItemVbProductBinding;

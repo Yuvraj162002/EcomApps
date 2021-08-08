@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ecom.MainActivity;
+import com.example.ecom.Activities.MainActivity;
+import com.example.ecom.FireBaseHelpers.ProductsHelper;
 import com.example.ecom.R;
 import com.example.ecom.controllers.databinders.VBProductBinder;
 import com.example.ecom.controllers.databinders.WBProductBinder;
@@ -19,7 +21,6 @@ import com.example.ecom.databinding.ItemWbProductBinding;
 import com.example.ecom.models.Cart;
 import com.example.ecom.models.Product;
 import com.example.ecom.models.ProductType;
-import com.example.ecom.tmp.ProductsHelper;
 
 
 import java.util.ArrayList;

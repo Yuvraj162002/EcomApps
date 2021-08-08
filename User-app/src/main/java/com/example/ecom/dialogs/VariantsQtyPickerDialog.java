@@ -5,11 +5,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.ecom.MainActivity;
+import com.example.ecom.Activities.MainActivity;
 import com.example.ecom.R;
 import com.example.ecom.controllers.AdapterCallbacksListener;
 import com.example.ecom.databinding.DialogVariantPickerBinding;
-import com.example.ecom.databinding.DialogWeightPickerBinding;
 import com.example.ecom.databinding.ItemVariantBinding;
 import com.example.ecom.models.Cart;
 import com.example.ecom.models.Product;
